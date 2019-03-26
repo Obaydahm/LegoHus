@@ -1,0 +1,57 @@
+html, body{
+	height: 100%;
+	width: 100%;
+}
+
+body{
+	background: url('/LegoHus/img/bg.jpg') no-repeat center;
+	background-size: cover;
+}
+
+a{
+	text-decoration: none!important;
+}
+
+.container-fluid {
+	background-color: rgba(0,0,0,0.6);
+}
+
+.box-title{
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1rem;
+	color: #2c4354;
+	width: 100%;
+	padding-bottom: 0px;
+}
+
+.login-box{
+        font-family: 'Poppins', sans-serif; 
+	background-color: rgba(255,255,255,0.9);
+	padding: 35px;
+	border-radius: 2px;
+	border: 1px solid transparent;
+}
+
+.form-control{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	border-radius: 2px;
+	font-size: .9rem;
+	margin-top: 15px;
+}
+
+.btn {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	margin-top: 15px;
+	border-radius: 2px;
+	width: 100%;
+}
+
+.create-link{
+	padding: 40px 0px 5px 0px;
+	width: 100%;
+	text-align: center;
+        font-size: .8rem;
+}

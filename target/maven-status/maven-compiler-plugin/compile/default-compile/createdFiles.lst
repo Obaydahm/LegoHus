@@ -1,0 +1,26 @@
+Logic\Controller_Impl.class
+Presentation\Commands\AdminShowOrdersCommand.class
+Data\DB.class
+<<<<<<< HEAD
+Presentation\test.class
+=======
+>>>>>>> newbranch
+Data\Mappers\OrderMapper.class
+Data\Order.class
+Data\House.class
+Presentation\Commands\CreateUserCommand.class
+Presentation\Commands\ShowOrderCommand.class
+Presentation\Commands\CreateOrderCommand.class
+Presentation\Commands\UnknownCommand.class
+Data\Mappers\UserMapper.class
+Presentation\Commands\LogoutCommand.class
+Presentation\Commands\AdminMarkShippedCommand.class
+Presentation\Commands\LoginCommand.class
+Data\User.class
+Presentation\FrontController.class
+Data\Bricks.class
+Logic\Exceptions\LegoException.class
+Presentation\Commands\ShowOrdersCommand.class
+Logic\Controller.class
+Logic\Calculator.class
+Presentation\Command.class

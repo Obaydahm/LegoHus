@@ -1,0 +1,26 @@
+<<<<<<< HEAD
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\test.java
+=======
+>>>>>>> newbranch
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Data\Order.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\Commands\CreateUserCommand.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Data\Mappers\UserMapper.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\Commands\ShowOrdersCommand.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\Commands\UnknownCommand.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Data\Bricks.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\Commands\AdminMarkShippedCommand.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\Commands\ShowOrderCommand.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Data\House.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Data\User.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Logic\Calculator.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\Command.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Data\DB.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\FrontController.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\Commands\CreateOrderCommand.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Data\Mappers\OrderMapper.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\Commands\AdminShowOrdersCommand.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\Commands\LoginCommand.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Logic\Controller_Impl.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Logic\Controller.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Logic\Exceptions\LegoException.java
+C:\Users\goo-x\OneDrive\Dokumenter\NetBeansProjects\Legohus\src\main\java\Presentation\Commands\LogoutCommand.java
