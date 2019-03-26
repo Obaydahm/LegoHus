@@ -12,6 +12,9 @@ import Logic.Exceptions.LegoException;
 import Presentation.Command;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,14 +26,22 @@ import javax.servlet.http.HttpSession;
 public class ShowOrdersCommand extends Command{
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws LegoException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("ahlen");
         Controller_Impl ctrl = new Controller_Impl();
         HttpSession session = request.getSession();
-        if (session.getAttribute("user") == null) response.sendRedirect("/LegoHus/index.jsp");
+        if (session.getAttribute("user") == null) request.getRequestDispatcher("/index.jsp").forward(request, response);
         User user = (User) session.getAttribute("user");
-        user.setOrders(ctrl.getOrders(user.getId()));
+        try {
+            user.setOrders(ctrl.getOrders(user.getId()));
+            System.out.println("hej");
+        } catch (LegoException ex) {
+            request.setAttribute("error", "Noget gik galt. Prøv igen.");
+            ex.printStackTrace();
+            System.out.println("farvel");
+        }
         session.setAttribute("user", user);
-        response.sendRedirect("/LegoHus/online/showorders.jsp");
+        request.getRequestDispatcher("/online/showorders.jsp").forward(request, response);
     }
     
 }

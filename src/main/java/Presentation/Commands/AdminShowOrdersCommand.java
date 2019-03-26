@@ -25,18 +25,16 @@ import javax.servlet.http.HttpSession;
 public class AdminShowOrdersCommand extends Command{
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws LegoException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Controller_Impl ctrl = new Controller_Impl();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        if (user == null || user.getAdmin() == 0) response.sendRedirect("/LegoHus/index.jsp");
-        request.setAttribute("orders", ctrl.getOrdersAdmin());
-        RequestDispatcher rd = request.getRequestDispatcher("/online/adminorders.jsp");
+        if (user == null || user.getAdmin() == 0) request.getRequestDispatcher("/").forward(request, response);
         try {
-            rd.forward(request, response);
-        } catch (ServletException ex) {
-            ex.printStackTrace();
+            request.setAttribute("orders", ctrl.getOrdersAdmin());
+        } catch (LegoException ex) {
+            request.setAttribute("error", "Noget gik galt. Prøv igen.");
         }
+        request.getRequestDispatcher("/online/adminorders.jsp").forward(request, response);
     }
-    
 }

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UnknownCommand extends Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws LegoException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.sendRedirect("/LegoHus/error.jsp");
     }
     

@@ -25,10 +25,10 @@ import javax.servlet.http.HttpSession;
 public class CreateOrderCommand extends Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws LegoException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Controller_Impl ctrl = new Controller_Impl();
         HttpSession session = request.getSession();
-        if (session.getAttribute("user") == null) response.sendRedirect("/LegoHus/index.jsp");
+        if (session.getAttribute("user") == null) request.getRequestDispatcher("/index.jsp").forward(request, response);
         
         User user = (User) session.getAttribute("user");
         int height = 0;
@@ -41,25 +41,19 @@ public class CreateOrderCommand extends Command {
             length = Integer.parseInt(request.getParameter("length"));
             
             if(height < 4 || width < 4 || length < 4){
-                RequestDispatcher rd = request.getRequestDispatcher("/online/neworder.jsp");
                 request.setAttribute("error", "Målene skal minimum være 4 hver");
+                request.getRequestDispatcher("/online/neworder.jsp").forward(request, response);
+            }else{
                 try {
-                    rd.forward(request, response);
-                } catch (ServletException ex) {
+                    ctrl.createOrder(user.getId(), height, width, length);
+                } catch (LegoException ex) {
                     Logger.getLogger(CreateOrderCommand.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else{
-                ctrl.createOrder(user.getId(), height, width, length);
-                response.sendRedirect("/LegoHus/FrontController?command=showorders");
+                request.getRequestDispatcher("/FrontController?command=showorders").forward(request, response);
             }
         } catch (NumberFormatException e) {
             request.setAttribute("error", "Du må kun indtaste tal");
-            RequestDispatcher rd = request.getRequestDispatcher("/online/neworder.jsp");
-            try {
-                rd.forward(request, response);
-            } catch (ServletException ex) {
-                ex.printStackTrace();
-            }
+            request.getRequestDispatcher("/online/neworder.jsp").forward(request, response);
             e.printStackTrace();
         }
     }

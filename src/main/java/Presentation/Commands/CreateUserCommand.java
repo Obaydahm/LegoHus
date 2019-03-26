@@ -24,10 +24,10 @@ import javax.servlet.http.HttpSession;
 public class CreateUserCommand extends Command{
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws LegoException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Controller_Impl ctrl = new Controller_Impl();
         HttpSession session = request.getSession();
-        if (session.getAttribute("user") != null) response.sendRedirect("LegoHus/index.jsp");
+        if (session.getAttribute("user") != null) request.getRequestDispatcher("/index.jsp").forward(request, response);
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String passwordAgain = request.getParameter("passwordagain");
@@ -35,20 +35,10 @@ public class CreateUserCommand extends Command{
         try{
             ctrl.createUser(username, password, passwordAgain);
             request.setAttribute("error", "Din bruger er blevet oprettet");
-            RequestDispatcher rd = request.getRequestDispatcher("/");
-            try {
-                rd.forward(request, response);
-            } catch (ServletException ex) {
-                ex.printStackTrace();
-            }
+            request.getRequestDispatcher("/").forward(request, response);
         }catch(LegoException e){
             request.setAttribute("error", e.getMessage());
-            RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
-            try {
-                rd.forward(request, response);
-            } catch (ServletException exx) {
-                exx.printStackTrace();
-            }
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
         }
         
     }

@@ -25,28 +25,25 @@ import javax.servlet.http.HttpSession;
 public class AdminMarkShippedCommand extends Command{
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws LegoException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Controller_Impl ctrl = new Controller_Impl();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        if (user == null || user.getAdmin() == 0) response.sendRedirect("/LegoHus/index.jsp");
+        if (user == null || user.getAdmin() == 0) request.getRequestDispatcher("/index.jsp").forward(request, response);
         try{
             int id = Integer.parseInt(request.getParameter("order_id"));
-            ctrl.markShippedAdmin(id);
-            RequestDispatcher rd = request.getRequestDispatcher("/FrontController?command=showorder&order_id=" + id);
+            
             try {
-                rd.forward(request, response);
-            } catch (ServletException e) {
-                e.printStackTrace();
+                ctrl.markShippedAdmin(id);
+            } catch (LegoException | NullPointerException ex) {
+                request.setAttribute("error", "Noget gik galt. Prøv venligst igen");
             }
+            
+            RequestDispatcher rd = request.getRequestDispatcher("/FrontController?command=showorder&order_id=" + id);
+            rd.forward(request, response);
         }catch(NumberFormatException ex){
             request.setAttribute("error", "Ordrenummeret er ikke gyldigt");
-            RequestDispatcher rd = request.getRequestDispatcher("/FrontController?command=showorders");
-            try {
-                rd.forward(request, response);
-            } catch (ServletException exx) {
-                exx.printStackTrace();
-            }
+            request.getRequestDispatcher("/FrontController?command=showorders").forward(request, response);
         }
         
         

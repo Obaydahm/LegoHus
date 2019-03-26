@@ -1,10 +1,6 @@
 Logic\Controller_Impl.class
 Presentation\Commands\AdminShowOrdersCommand.class
 Data\DB.class
-<<<<<<< HEAD
-Presentation\test.class
-=======
->>>>>>> newbranch
 Data\Mappers\OrderMapper.class
 Data\Order.class
 Data\House.class

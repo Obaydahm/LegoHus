@@ -25,27 +25,23 @@ import javax.servlet.http.HttpSession;
 public class LoginCommand extends Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws LegoException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        if (session.getAttribute("user") != null) response.sendRedirect("LegoHus/index.jsp");
+        if (session.getAttribute("user") != null) request.getRequestDispatcher("/index.jsp").forward(request, response);
         
         Controller_Impl ctrl = new Controller_Impl();
         User user = null;
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        user = ctrl.validateLogin(username, password);
-        if (user != null) {
+        
+        try {
+            user = ctrl.validateLogin(username, password);
             session.setAttribute("user", user);
-        } else {
+        } catch (LegoException ex) {
             request.setAttribute("error", "Brugernavn og/eller adgangskode stemmer ikke!");
         }
-        RequestDispatcher rd = request.getRequestDispatcher("/");
-        try {
-            rd.forward(request, response);
-        } catch (ServletException ex) {
-            ex.printStackTrace();
-        }
 
+        request.getRequestDispatcher("/").forward(request, response);
     }
 
 }

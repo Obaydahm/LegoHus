@@ -36,7 +36,7 @@ public abstract class Command {
      * @throws ServletException ServletException if a servlet-specific error occurs
      * @throws IOException IOException if an I/O error occurs
      */
-    public abstract void execute(HttpServletRequest request, HttpServletResponse response) throws LegoException, IOException;
+    public abstract void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
     
     /**
      * Searches request for the value of parameter 'command', then checks the 
@@ -59,6 +59,7 @@ public abstract class Command {
         commands.put("adminshoworders", new AdminShowOrdersCommand());        
         commands.put("adminmarkshipped", new AdminMarkShippedCommand());
         c = commands.getOrDefault(origin, new UnknownCommand());
+
         return c;
     }
     

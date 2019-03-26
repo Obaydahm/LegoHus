@@ -8,6 +8,7 @@ package Presentation.Commands;
 import Logic.Exceptions.LegoException;
 import Presentation.Command;
 import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LogoutCommand extends Command{
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws LegoException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         if(request.getSession().getAttribute("user") != null){
             request.getSession().removeAttribute("user");
             response.sendRedirect("/LegoHus");
